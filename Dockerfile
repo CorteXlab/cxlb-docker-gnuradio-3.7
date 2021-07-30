@@ -30,11 +30,11 @@ RUN git clone https://github.com/CorteXlab/cxlb-build-toolchain.git cxlb-build-t
 ENV BUILD="cxlb-build-toolchain.git/cxlb-build-toolchain -y /usr/bin/python -as"
 ENV PARMS="cxlb_toolchain_build /cortexlab/toolchains/current"
 RUN ${APT} install udev
-RUN ${BUILD} uhd=master ${PARMS}
+RUN ${BUILD} uhd=UHD-3.15.LTS ${PARMS}
 RUN ${BUILD} uhd-firmware ${PARMS}
 RUN ${BUILD} gnuradio=maint-3.7 ${PARMS}
 RUN ${BUILD} gr-bokehgui=maint-3.7 ${PARMS}
-RUN ${BUILD} gr-iqbal=master ${PARMS}
+RUN ${BUILD} gr-iqbal=gr3.7 ${PARMS}
 RUN ${BUILD} fft-web ${PARMS}
 
 # activate toolchain configuration
