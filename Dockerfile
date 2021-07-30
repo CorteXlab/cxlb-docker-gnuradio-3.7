@@ -17,6 +17,11 @@ RUN sed -i 's/^#\?[[:space:]]*PermitRootLogin.*$/PermitRootLogin yes/' /etc/ssh/
 RUN mkdir /run/sshd
 RUN chmod 755 /run/sshd
 
+# tweaks for macos / windows
+RUN sed -i 's/^#\?[[:space:]]*X11UseLocalhost.*$/X11UseLocalhost no/' /etc/ssh/sshd_config
+RUN echo "AddressFamily inet" >> /etc/ssh/sshd_config
+RUN touch /root/.Xauthority
+
 # cxlb-build-toolchain.git
 RUN ${APT} install git
 RUN git clone https://github.com/CorteXlab/cxlb-build-toolchain.git cxlb-build-toolchain.git
